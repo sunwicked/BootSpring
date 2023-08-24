@@ -7,6 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.FilterType;
 
 import io.datajek.spring.basics.movierecommendersystem.lesson1.RecommenderImplementation;
+import io.datajek.spring.basics.movierecommendersystem.lesson8.Movie;
 
 
 @SpringBootApplication
@@ -19,11 +20,17 @@ public class MovieRecommenderSystemApplication {
 		ApplicationContext appContext = SpringApplication.run(
                 MovieRecommenderSystemApplication.class, args);
 
-//use ApplicationContext to get recommender object
+//Retrieving singleton bean from application context
 RecommenderImplementation recommender = appContext.getBean(
                               RecommenderImplementation.class);   
-
 System.out.println(recommender);
+
+//Retrieving prototype bean from application context twice
+Movie m1 = appContext.getBean(Movie.class);
+System.out.println(m1);
+
+Movie m2 = appContext.getBean(Movie.class);
+System.out.println(m2);
 	}
 
 }

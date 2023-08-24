@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import io.datajek.spring.basics.movierecommendersystem.lesson8.Movie;
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 
 @Component
@@ -46,6 +47,12 @@ public class ContentBasedFilter implements Filter {
 	    private void postConstruct() {
 	        //load movies into cache
 	        logger.info("In ContentBasedFilter postConstruct method");
+	    }
+	    
+	    @PreDestroy
+	    private void preDestroy() {
+	        //clear movies from cache
+	        logger.info("In ContentBasedFilter preDestroy method");
 	    }
 	 
 }

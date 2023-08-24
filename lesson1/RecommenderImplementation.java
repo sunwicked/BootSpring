@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
 
 @Component
 public class RecommenderImplementation {
@@ -40,5 +41,11 @@ public class RecommenderImplementation {
     public void postConstruct() {
         //initialization code goes here
         logger.info("In RecommenderImplementation postConstruct method");
+    }
+	
+	@PreDestroy
+	 public void preDestroy() {
+        //cleanup code
+        logger.info("In RecommenderImplementation preDestroy method");
     }
 }

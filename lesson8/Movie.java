@@ -2,6 +2,12 @@ package io.datajek.spring.basics.movierecommendersystem.lesson8;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.PreDestroy;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.ScopedProxyMode;
 
@@ -12,15 +18,17 @@ import org.springframework.context.annotation.ScopedProxyMode;
 public class Movie {
 	
 	private static int instances  = 0; 
+	 private Logger logger = LoggerFactory.getLogger(this.getClass());
+
 	
-	private int id;
-	  private String name;
+	    private int id;
+	    private String name;
 	    private String genre;  
 	    private String producer; 
 	 
 	    public Movie() {
 	        instances++;
-	        System.out.println("Movie constructor called");
+	        logger.info("In Movie constructor method");
 	     }
 
 	    public static int getInstances() {
@@ -36,5 +44,16 @@ public class Movie {
 			 
 			return similarity;
 		}
-
+		
+		@PostConstruct
+		private void postConstruct() {
+		    //initialization code
+		    logger.info("In Movie postConstruct method");
+		}
+		
+		@PreDestroy
+		private void preDestroy() {
+		    //cleanup code
+		    logger.info("In Movie preDestroy method");
+		} 
 }
