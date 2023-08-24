@@ -4,15 +4,14 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.context.annotation.Primary;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import io.datajek.spring.basics.movierecommendersystem.lesson8.Movie;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
 
-@Component
+@Service
 @Qualifier("CF")
 public class ContentBasedFilter implements Filter {
 

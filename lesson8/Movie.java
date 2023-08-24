@@ -2,6 +2,7 @@ package io.datajek.spring.basics.movierecommendersystem.lesson8;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
@@ -13,7 +14,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 
 
 
-@Component @Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE,
+@Repository @Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE,
 		proxyMode=ScopedProxyMode.TARGET_CLASS)
 public class Movie {
 	
